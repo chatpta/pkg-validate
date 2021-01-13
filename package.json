@@ -1,15 +1,19 @@
 {
-  "name": "validate",
+  "name": "@petercraftsmn/validate",
   "version": "1.0.0",
+  "repository": "https://github.com/petercraftsmn/validate",
   "description": "Validate data",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "export NODE_ENV=test && mocha --watch --recursive"
   },
   "keywords": [
     "validate",
     "data"
   ],
   "author": "Peter craftsmn",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  }
 }
