@@ -1,10 +1,11 @@
 const assert = require('assert').strict;
-const Validate = require('../lib/validate');
+const Validate = require('../index');
 
 
 describe('AuthUtil test', function () {
     const goodString = 'I am a good person';
     const badString = 'I <script> am evil </script>';
+    const user = {username: 'username'};
     const validate = new Validate();
 
     describe('Validates that value is string containing a-zA-Z1-9 or 0 or -', function () {
@@ -20,6 +21,7 @@ describe('AuthUtil test', function () {
             assert.ok(!validate.isStringOfUsername(goodString), 'Good string test failed');
             assert.ok(!validate.isStringOfCharacters(badString), 'Bad string test failed');
             assert.ok(validate.isStringOfUsername('specialusername'), 'username validation failed');
+            assert.ok(validate.isStringOfUsername(user.username), 'username validation failed');
             done();
         });
 
