@@ -1,0 +1,15 @@
+{
+  "name": "validate",
+  "version": "1.0.0",
+  "description": "Validate data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "validate",
+    "data"
+  ],
+  "author": "Peter craftsmn",
+  "license": "ISC"
+}
