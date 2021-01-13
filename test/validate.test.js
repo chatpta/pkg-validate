@@ -20,7 +20,7 @@ describe('AuthUtil test', function () {
         it('validate isStringOfUsername', function (done) {
             assert.ok(!validate.isStringOfUsername(goodString), 'Good string test failed');
             assert.ok(!validate.isStringOfCharacters(badString), 'Bad string test failed');
-            assert.ok(validate.isStringOfUsername('specialusername'), 'username validation failed');
+            assert.ok(validate.isStringOfUsername('testUsername'), 'username validation failed');
             assert.ok(validate.isStringOfUsername(user.username), 'username validation failed');
             done();
         });
@@ -30,6 +30,14 @@ describe('AuthUtil test', function () {
             assert.ok(!validate.isEmail(badString), 'Bad email test failed');
             assert.ok(validate.isEmail('peter@gmail.com'), 'Email validation failed');
             assert.ok(!validate.isEmail('peter @gmail.com'), 'Email validation failed');
+            done();
+        });
+
+        it('validate isPassword', function (done) {
+            assert.ok(!validate.isStringOfPassword(goodString), 'Bad password test failed');
+            assert.ok(!validate.isStringOfPassword(badString), 'Bad password failed');
+            assert.ok(validate.isStringOfPassword('ha!lsw3ol&*ler'), 'Password validation failed');
+            assert.ok(!validate.isStringOfPassword('ha!lsw 3ol&*ler'), 'Password validation failed');
             done();
         });
     });
