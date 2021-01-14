@@ -1,6 +1,6 @@
 {
   "name": "@petercraftsmn/validate",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "repository": "https://github.com/petercraftsmn/validate",
   "description": "Validate data",
   "main": "index.js",
