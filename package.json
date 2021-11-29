@@ -1,7 +1,7 @@
 {
-  "name": "@petercraftsmn/validate",
-  "version": "1.0.5",
-  "repository": "https://github.com/petercraftsmn/validate",
+  "name": "@chatpta/validate",
+  "version": "1.0.0",
+  "repository": "https://github.com/chatpta/validate",
   "description": "Validate data",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "validate",
     "data"
   ],
-  "author": "Peter craftsmn",
+  "author": "Chatpta team",
   "license": "ISC",
-  "devDependencies": {
-    "mocha": "^8.2.1"
+  "dependencies": {
+    "mocha": "^9.1.3"
   }
 }
