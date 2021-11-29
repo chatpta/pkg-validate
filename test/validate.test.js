@@ -1,44 +1,45 @@
-const assert = require('assert').strict;
-const Validate = require('../index');
+const assert = require( 'assert' ).strict;
+const { describe, it } = require( 'mocha' );
+const validate = require( '../index' );
 
 
-describe('AuthUtil test', function () {
+describe( 'AuthUtil test', function () {
     const goodString = 'I am a good person';
-    const badString = 'I <script> am evil </script>';
-    const user = {username: 'username'};
-    const validate = new Validate();
+    const badString = 'I <script>am evil</script>';
+    const user = { username: 'username' };
 
-    describe('Validates that value is string containing a-zA-Z1-9 or 0 or -', function () {
-        it('validate isStringOfCharacters', function (done) {
-            assert.ok(!validate.isStringOfCharacters(), 'Undefined string test failed');
-            assert.ok(!validate.isStringOfCharacters(3), 'Type of string test failed');
-            assert.ok(validate.isStringOfCharacters(goodString), 'Good string test failed');
-            assert.ok(!validate.isStringOfCharacters(badString), 'Bad string test failed');
-            done();
-        });
+    describe( 'Validate function test', function () {
 
-        it('validate isStringOfUsername', function (done) {
-            assert.ok(!validate.isStringOfUsername(goodString), 'Good string test failed');
-            assert.ok(!validate.isStringOfCharacters(badString), 'Bad string test failed');
-            assert.ok(validate.isStringOfUsername('testUsername'), 'username validation failed');
-            assert.ok(validate.isStringOfUsername(user.username), 'username validation failed');
+        it( 'isCharactersString returns true if input is character false otherwise', function ( done ) {
+            assert.ok( !validate.isCharactersString(), 'Undefined string test failed' );
+            assert.ok( !validate.isCharactersString( 3 ), 'Type of string test failed' );
+            assert.ok( validate.isCharactersString( goodString ), 'Good string test failed' );
+            assert.ok( !validate.isCharactersString( badString ), 'Bad string test failed' );
             done();
-        });
+        } );
 
-        it('validate isEmail', function (done) {
-            assert.ok(!validate.isEmail(goodString), 'Bad email test failed');
-            assert.ok(!validate.isEmail(badString), 'Bad email test failed');
-            assert.ok(validate.isEmail('peter@gmail.com'), 'Email validation failed');
-            assert.ok(!validate.isEmail('peter @gmail.com'), 'Email validation failed');
+        it( 'isEmailString returns true if input is email false otherwise ', function ( done ) {
+            assert.ok( !validate.isEmailString( goodString ), 'Bad email test failed' );
+            assert.ok( !validate.isEmailString( badString ), 'Bad email test failed' );
+            assert.ok( validate.isEmailString( 'peter@gmail.com' ), 'Email validation failed' );
+            assert.ok( !validate.isEmailString( 'peter @gmail.com' ), 'Email validation failed' );
             done();
-        });
+        } );
 
-        it('validate isPassword', function (done) {
-            assert.ok(!validate.isStringOfPassword(goodString), 'Bad password test failed');
-            assert.ok(!validate.isStringOfPassword(badString), 'Bad password failed');
-            assert.ok(validate.isStringOfPassword('ha!lsw3ol&*ler'), 'Password validation failed');
-            assert.ok(!validate.isStringOfPassword('ha!lsw 3ol&*ler'), 'Password validation failed');
+        it( 'isPasswordString returns true if input is password string false otherwise', function ( done ) {
+            assert.ok( !validate.isPasswordString( goodString ), 'Bad password test failed' );
+            assert.ok( !validate.isPasswordString( badString ), 'Bad password failed' );
+            assert.ok( validate.isPasswordString( 'ha!lsw3ol&*ler' ), 'Password validation failed' );
+            assert.ok( !validate.isPasswordString( 'ha!lsw 3ol&*ler' ), 'Password validation failed' );
             done();
-        });
-    });
-});
+        } );
+
+        it( 'isUsernameString returns true if input is username string false otherwise', function ( done ) {
+            assert.ok( !validate.isUsernameString( goodString ), 'Good string test failed' );
+            assert.ok( !validate.isUsernameString( badString ), 'Bad string test failed' );
+            assert.ok( validate.isUsernameString( 'testUsername' ), 'username validation failed' );
+            assert.ok( validate.isUsernameString( user.username ), 'username validation failed' );
+            done();
+        } );
+    } );
+} );
