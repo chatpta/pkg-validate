@@ -52,5 +52,23 @@ describe( 'AuthUtil test', function () {
             assert.ok( validate.isUsernameString( user.username ), 'username validation failed' );
             done();
         } );
+
+        it( 'isPhoneNumber returns true if input is username string false otherwise', function ( done ) {
+            assert.ok( validate.isPhoneNumber( "509 644 2443" ), 'Good phone number test failed' );
+            assert.ok( !validate.isPhoneNumber( "509 644 2443998" ), 'Bad phone number test failed' );
+            done();
+        } );
+
+        it( 'isUrlSafeString returns true if input is username string false otherwise', function ( done ) {
+            const urlSafeString = 'hbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJ1c2VyX2lkIjoyNjg0LCJ0aW1lIjoxNjEwNzE2ODM0ODc2fQ.' +
+                '9o_7dM4YjjcNseH7Cw3IL_t8yD1hhs1hluTCWG_JzYEExYOp89Gd6k0AbU018x3EQXCrdMUE6KXfL0KNg2Li9g';
+
+            const urlUnSafeString = 'hbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJ1c2VyX2lkIjoyNjg0LCJ0aW1lIjoxNjEwNzE2ODM0ODc2fQ.' +
+                '9o_7dM4YjjcNseH7Cw3IL_t8yD1hhs1hl=uTCWG_JzYEExYOp8/9Gd6k0AbU018x3EQXCrdMUE6KXfL0KNg2Li9g';
+
+            assert.ok( !validate.isUrlSafeString( urlUnSafeString ), 'Url unsafe test failed' );
+            assert.ok( validate.isUrlSafeString( urlSafeString ), 'Url safe test failed' );
+            done();
+        } );
     } );
 } );
