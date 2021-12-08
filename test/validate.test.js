@@ -70,5 +70,16 @@ describe( 'AuthUtil test', function () {
             assert.ok( validate.isUrlSafeString( urlSafeString ), 'Url safe test failed' );
             done();
         } );
+
+        it( 'isPasswordLengthCorrect returns true if 6 <= password <= 24', function ( done ) {
+            const password = 'hbGciOiJzaGE1MTIiLCJ';
+
+            const badPassword = 'hbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJ1c2VyX2lkIjoyNjg0LCJ0aW1lIjoxNjEwNzE2ODM0ODc2fQ.' +
+                '9o_7dM4YjjcNseH7Cw3IL_t8yD1hhs1hl=uTCWG_JzYEExYOp8/9Gd6k0AbU018x3EQXCrdMUE6KXfL0KNg2Li9g';
+
+            assert.ok( validate.isPassword6To24CharacterLong( password ), 'Good password fail' );
+            assert.ok( !validate.isPassword6To24CharacterLong( badPassword ), 'Bad password fail' );
+            done();
+        } );
     } );
 } );
