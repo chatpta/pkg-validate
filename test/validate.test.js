@@ -1,6 +1,6 @@
 const assert = require( 'assert' ).strict;
 const { describe, it } = require( 'mocha' );
-const validate = require( '../index' );
+const validate = require( '../index' ).validate;
 
 
 describe( 'AuthUtil test', function () {
