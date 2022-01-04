@@ -10,6 +10,17 @@ describe( 'AuthUtil test', function () {
 
     describe( 'Validate function test', function () {
 
+        it( 'isValidUuidString returns true if uuid false otherwise', function ( done ) {
+            const badUuid = "1c76ea46-a212-4cc5-9031-a9a28d927c4c98";
+            const goodUuid = "1c76ea46-a212-4cc5-9031-a9a28d927c4c";
+
+            assert.ok( !validate.isValidUuidString(), 'Undefined string test failed' );
+            assert.ok( !validate.isValidUuidString( 3 ), 'Type of string test failed' );
+            assert.ok( !validate.isValidUuidString( badUuid ), 'Bad string test failed' );
+            assert.ok( validate.isValidUuidString( goodUuid ), 'Good string test failed' );
+            done();
+        } );
+
         it( 'isCharactersString returns true if input is character false otherwise', function ( done ) {
             assert.ok( !validate.isCharactersString(), 'Undefined string test failed' );
             assert.ok( !validate.isCharactersString( 3 ), 'Type of string test failed' );
