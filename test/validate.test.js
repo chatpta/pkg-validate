@@ -10,6 +10,19 @@ describe( 'AuthUtil test', function () {
 
     describe( 'Validate function test', function () {
 
+        it( 'isValidIntegerString returns true if integer false otherwise', function ( done ) {
+            const badString = "1chie87";
+            const badStringTwo = "13-34";
+            const goodString = "17";
+
+            assert.ok( !validate.isValidIntegerString(), 'Undefined string test failed' );
+            assert.ok( !validate.isValidIntegerString( 3 ), 'Type of string test failed' );
+            assert.ok( !validate.isValidIntegerString( badString ), 'Bad string test failed' );
+            assert.ok( !validate.isValidIntegerString( badStringTwo ), 'Bad string test failed' );
+            assert.ok( validate.isValidIntegerString( goodString ), 'Good string test failed' );
+            done();
+        } );
+
         it( 'isValidUuidString returns true if uuid false otherwise', function ( done ) {
             const badUuid = "1c76ea46-a212-4cc5-9031-a9a28d927c4c98";
             const goodUuid = "1c76ea46-a212-4cc5-9031-a9a28d927c4c";
