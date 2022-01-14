@@ -44,9 +44,12 @@ describe( 'AuthUtil test', function () {
 
         it( 'isNameString returns true if input is character false otherwise', function ( done ) {
             assert.ok( !validate.isNameString( 'Peter @ Singh' ), 'Bad name' );
+            assert.ok( !validate.isNameString( '3Peter' ), 'Bad name' );
             assert.ok( validate.isNameString( 'Peter' ), 'Good name' );
             assert.ok( validate.isNameString( 'Peter-Singh' ), 'Peter-Singh' );
             assert.ok( validate.isNameString( 'P. Singh' ), 'Peter-Singh' );
+            assert.ok( validate.isNameString( "P's Singh" ), "P's Singh" );
+            assert.ok( validate.isNameString( "P's Singh-Lion" ), "P's Singh-Lion" );
             done();
         } );
 
