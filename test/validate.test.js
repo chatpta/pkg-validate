@@ -10,6 +10,19 @@ describe( 'AuthUtil test', function () {
 
     describe( 'Validate function test', function () {
 
+        it( 'isValidJsonString returns true if json false otherwise', function ( done ) {
+            const badString = "1chie87";
+            const badStringTwo = "13-34";
+            const goodString = "{\"blocks\":[{\"key\":\"ediog\",\"text\":\"I am doing well\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}";
+
+            assert.ok( !validate.isValidJsonString(), 'Undefined string test failed' );
+            assert.ok( !validate.isValidJsonString( 3 ), 'Type of string test failed' );
+            assert.ok( !validate.isValidJsonString( badString ), 'Bad string test failed' );
+            assert.ok( !validate.isValidJsonString( badStringTwo ), 'Bad string test failed' );
+            assert.ok( validate.isValidJsonString( goodString ), 'Good string test failed' );
+            done();
+        } );
+
         it( 'isValidIntegerString returns true if integer false otherwise', function ( done ) {
             const badString = "1chie87";
             const badStringTwo = "13-34";
