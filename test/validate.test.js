@@ -91,11 +91,13 @@ describe( 'AuthUtil test', function () {
             const badPassword_2 = "!@#$%^&*";
             const badPassword_3 = 'I <script>am evil</script>';
             const badPassword_4 = 'ha!lsw 3ol&*ler';
+            const badPassword_5 = 'pnka*';
             const goodPassword_1 = 'pankaj*';
             const goodPassword_2 = 'pank!aj67';
             const goodPassword_3 = 'some654t#hing#';
             const goodPassword_4 = '82625%82726';
             const goodPassword_5 = 'halsw3ol&*ler';
+            const goodPassword_6 = 'pnkaj*';
 
             assert.deepStrictEqual( validate.isPasswordStringFailureMessage( badPassword_1 ),
                 "Characters, numbers and one of !@#$%^&*" );
@@ -104,11 +106,13 @@ describe( 'AuthUtil test', function () {
             assert.ok( !validate.isPasswordString( badPassword_2 ), 'Bad Password validation failed' );
             assert.ok( !validate.isPasswordString( badPassword_3 ), 'Bad Password validation failed' );
             assert.ok( !validate.isPasswordString( badPassword_4 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isPasswordString( badPassword_5 ), 'Bad Password validation failed' );
             assert.ok( validate.isPasswordString( goodPassword_1 ), 'Password validation failed' );
             assert.ok( validate.isPasswordString( goodPassword_2 ), 'Password validation failed' );
             assert.ok( validate.isPasswordString( goodPassword_3 ), 'Password validation failed' );
             assert.ok( validate.isPasswordString( goodPassword_4 ), 'Password validation failed' );
             assert.ok( validate.isPasswordString( goodPassword_5 ), 'Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_6 ), 'Password validation failed' );
             done();
         } );
 
