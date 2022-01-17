@@ -87,10 +87,28 @@ describe( 'AuthUtil test', function () {
         } );
 
         it( 'isPasswordString returns true if input is password string false otherwise', function ( done ) {
-            assert.ok( !validate.isPasswordString( goodString ), 'Bad password test failed' );
-            assert.ok( !validate.isPasswordString( badString ), 'Bad password failed' );
-            assert.ok( !validate.isPasswordString( 'ha!lsw 3ol&*ler' ), 'Password validation failed' );
-            assert.ok( validate.isPasswordString( 'ha!lsw3ol&*ler' ), 'Password validation failed' );
+            const badPassword_1 = 'I am a good person';
+            const badPassword_2 = "!@#$%^&*";
+            const badPassword_3 = 'I <script>am evil</script>';
+            const badPassword_4 = 'ha!lsw 3ol&*ler';
+            const goodPassword_1 = 'pankaj*';
+            const goodPassword_2 = 'pank!aj67';
+            const goodPassword_3 = 'some654t#hing#';
+            const goodPassword_4 = '82625%82726';
+            const goodPassword_5 = 'halsw3ol&*ler';
+
+            assert.deepStrictEqual( validate.isPasswordStringFailureMessage( badPassword_1 ),
+                "Characters, numbers and one of !@#$%^&*" );
+
+            assert.ok( !validate.isPasswordString( badPassword_1 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isPasswordString( badPassword_2 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isPasswordString( badPassword_3 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isPasswordString( badPassword_4 ), 'Bad Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_1 ), 'Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_2 ), 'Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_3 ), 'Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_4 ), 'Password validation failed' );
+            assert.ok( validate.isPasswordString( goodPassword_5 ), 'Password validation failed' );
             done();
         } );
 
