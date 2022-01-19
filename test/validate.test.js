@@ -10,6 +10,21 @@ describe( 'AuthUtil test', function () {
 
     describe( 'Validate function test', function () {
 
+        it( 'isInteger returns true if integer false otherwise', function ( done ) {
+            const badInteger_1 = 234.65;
+            const badInteger_2 = '';
+            const badInteger_3 = "3.2";
+            const badInteger_4 = "67";
+            const goodInteger_1 = 72662;
+
+            assert.ok( !validate.isInteger( badInteger_1 ), 'Bad integer test failed' );
+            assert.ok( !validate.isInteger( badInteger_2 ), 'Bad integer test failed' );
+            assert.ok( !validate.isInteger( badInteger_3 ), 'Bad integer test failed' );
+            assert.ok( !validate.isInteger( badInteger_4 ), 'Bad integer test failed' );
+            assert.ok( validate.isInteger( goodInteger_1 ), 'Good integer test failed' );
+            done();
+        } );
+
         it( 'isValidJsonString returns true if json false otherwise', function ( done ) {
             const badString = "1chie87";
             const badStringTwo = "13-34";
