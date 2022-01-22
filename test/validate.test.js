@@ -79,6 +79,8 @@ describe( 'AuthUtil test', function () {
             assert.ok( validate.isNameString( 'P. Singh' ), 'Peter-Singh' );
             assert.ok( validate.isNameString( "P's Singh" ), "P's Singh" );
             assert.ok( validate.isNameString( "P's Singh-Lion" ), "P's Singh-Lion" );
+            assert.ok( validate.isNameString( "P's Singh-Lion,s" ), "P's Singh-Lion" );
+            assert.ok( validate.isNameString( " P's Singh-Lion " ), "P's Singh-Lion" );
             done();
         } );
 
