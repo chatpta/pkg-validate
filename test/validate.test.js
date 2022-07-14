@@ -10,6 +10,17 @@ describe( 'AuthUtil test', function () {
 
     describe( 'Validate function test', function () {
 
+        it( 'isImageUrl returns true if safe image url, false otherwise', function ( done ) {
+            const image_url = "A44C0A67A8704767AD2B97DC46478827/8B57EB9F014143F2AE6B9D8EBBB7CDA6-700.jpg";
+            const image_url_bad_one = "A44C0A67*A8704767AD2B97DC46478827/8B57EB9F014143F2AE6B9D8EBBB7CDA6-700.jpg";
+            const image_url_bad_two = "A44C0A67>A8704767AD2B97DC46478827/8B57EB9F014143F2AE6B9D8EBBB7CDA6-700.jpg";
+
+            assert.ok( !validate.isImageUrl( image_url_bad_one ), 'Bad image url test failed' );
+            assert.ok( !validate.isImageUrl( image_url_bad_two ), 'Bad image url test failed' );
+            assert.ok( validate.isImageUrl( image_url ), 'Good image url test failed' );
+            done();
+        } );
+
         it( 'isInteger returns true if integer false otherwise', function ( done ) {
             const badInteger_1 = 234.65;
             const badInteger_2 = '';
