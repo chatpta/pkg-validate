@@ -182,5 +182,38 @@ describe( 'AuthUtil test', function () {
             assert.ok( !validate.isPassword6To24CharacterLong( badPassword ), 'Bad password fail' );
             done();
         } );
+
+        it( 'isProvinceString returns true if input is two letter province code', function ( done ) {
+            const ontario = "ON";
+            const quebec = "QC";
+            const bad = "IamBad";
+
+            assert.ok( validate.isProvinceString( ontario ), 'Good province code failing' );
+            assert.ok( validate.isProvinceString( quebec ), 'Good province code failing' );
+            assert.ok( !validate.isProvinceString( bad ), 'Bad province code failing' );
+            done();
+        } );
+
+        it( 'isBoolValue', function ( done ) {
+            const trueValue = true;
+            const falseValue = true;
+            const notBool = 'I am string';
+
+            assert.ok( validate.isBoolValue( trueValue ), 'Bool value failing' );
+            assert.ok( validate.isBoolValue( falseValue ), 'Bool value failing' );
+            assert.ok( !validate.isBoolValue( notBool ), 'Not bool value failing' );
+            done();
+        } );
+
+        it( 'isPostalCodeString returns true if postal code', function ( done ) {
+            const codeOne = "M4Y1R6";
+            const codeTwo = "G1G0E3";
+            const bad = "M441R6";
+
+            assert.ok( validate.isPostalCodeString( codeOne ), 'Good province code failing' );
+            assert.ok( validate.isPostalCodeString( codeTwo ), 'Good province code failing' );
+            assert.ok( !validate.isPostalCodeString( bad ), 'Bad province code failing' );
+            done();
+        } );
     } );
 } );
