@@ -215,5 +215,14 @@ describe( 'AuthUtil test', function () {
             assert.ok( !validate.isPostalCodeString( bad ), 'Bad province code failing' );
             done();
         } );
+
+        it( 'isSafeString returns true if safe', function ( done ) {
+            const safeString_1 = "#346 Charles* st. west:-(ON) east_side [as]";
+            const unsafeString_1 = "<G1G0E3?";
+
+            assert.ok( validate.isSafeString( safeString_1 ), 'Safe string code failing' );
+            assert.ok( !validate.isSafeString( unsafeString_1 ), 'Unsafe string code failing' );
+            done();
+        } );
     } );
 } );
