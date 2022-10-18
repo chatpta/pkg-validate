@@ -224,5 +224,16 @@ describe( 'AuthUtil test', function () {
             assert.ok( !validate.isSafeString( unsafeString_1 ), 'Unsafe string code failing' );
             done();
         } );
+
+        it( 'isSafeString returns true if safe', function ( done ) {
+            const stringArray_1 = [ "on", "ca" ];
+            const stringArray_2 = [ "gc", "qc" ];
+            const value_1 = "ca";
+            const value_2 = "aa";
+
+            assert.ok( validate.isInStringArray( stringArray_1, value_1 ), 'Safe string code failing' );
+            assert.ok( !validate.isInStringArray( stringArray_2, value_2 ), 'Unsafe string code failing' );
+            done();
+        } );
     } );
 } );
