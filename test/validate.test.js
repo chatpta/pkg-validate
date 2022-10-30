@@ -146,6 +146,42 @@ describe( 'AuthUtil test', function () {
             done();
         } );
 
+        it( 'isSimplePasswordString returns true if input is password string false otherwise', function ( done ) {
+            const badPassword_1 = 'I am a good person';
+            const badPassword_2 = 'I <script>am evil</script>';
+            const badPassword_3 = 'ha!lsw 3ol&*ler';
+            const badPassword_4 = 'pnka*';
+            const badPassword_5 = 'pnka*some654t#hin';
+            const badPassword_6 = 'pnkad';
+            const goodPassword_1 = 'pankaj*';
+            const goodPassword_2 = 'pank!aj67';
+            const goodPassword_3 = 'some654t#hing#';
+            const goodPassword_4 = '82625%82726';
+            const goodPassword_5 = 'halsw3ol&*ler';
+            const goodPassword_6 = 'pnkaj*';
+            const goodPassword_7 = 'pnkajchatpta';
+            const goodPassword_8 = '!@#$%^&*';
+
+            assert.deepStrictEqual( validate.isSimplePasswordStringFailureMessage( badPassword_1 ),
+                "Total 6 to 16 characters, numbers or !@#$%^&*" );
+
+            assert.ok( !validate.isSimplePasswordString( badPassword_1 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isSimplePasswordString( badPassword_2 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isSimplePasswordString( badPassword_3 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isSimplePasswordString( badPassword_4 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isSimplePasswordString( badPassword_5 ), 'Bad Password validation failed' );
+            assert.ok( !validate.isSimplePasswordString( badPassword_6 ), 'Bad Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_1 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_2 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_3 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_4 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_5 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_6 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_7 ), 'Password validation failed' );
+            assert.ok( validate.isSimplePasswordString( goodPassword_8 ), 'Password validation failed' );
+            done();
+        } );
+
         it( 'isUsernameString returns true if input is username string false otherwise', function ( done ) {
             assert.ok( !validate.isUsernameString( goodString ), 'Good string test failed' );
             assert.ok( !validate.isUsernameString( badString ), 'Bad string test failed' );
