@@ -271,5 +271,16 @@ describe( 'AuthUtil test', function () {
             assert.ok( !validate.isInStringArray( stringArray_2, value_2 ), 'Unsafe string code failing' );
             done();
         } );
+
+        it( 'isCountryCodeString returns true if postal code', function ( done ) {
+            const codeOne = "+1";
+            const codeTwo = "+966";
+            const bad = "572";
+
+            assert.ok( validate.isCountryCodeString( codeOne ), 'Good country code failing' );
+            assert.ok( validate.isCountryCodeString( codeTwo ), 'Good country code failing' );
+            assert.ok( !validate.isCountryCodeString( bad ), 'Bad country code failing' );
+            done();
+        } );
     } );
 } );
