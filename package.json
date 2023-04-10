@@ -1,6 +1,6 @@
 {
   "name": "@chatpta/validate",
-  "version": "3.0.17",
+  "version": "3.0.18",
   "repository": "https://github.com/chatpta/pkg-validate",
   "description": "Validate data",
   "main": "index.js",
