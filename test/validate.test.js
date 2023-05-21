@@ -4,7 +4,7 @@ const validate = require( '../index' ).validate;
 
 
 describe( 'AuthUtil test', function () {
-    const goodString = 'I am a good person';
+    const goodString = "I am a good person";
     const badString = 'I <script>am evil</script>';
     const user = { username: 'username' };
 
